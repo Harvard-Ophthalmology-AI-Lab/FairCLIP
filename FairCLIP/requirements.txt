@@ -1,0 +1,4 @@
+geomloss>=0.2.6
+torch
+torchvision
+clip
