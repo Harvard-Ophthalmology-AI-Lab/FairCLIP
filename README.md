@@ -62,50 +62,28 @@ NOTE: OPENAI_KEY is only needed for GPT-4.
 
 ## Pre-training
 
-<!-- ### MAE
-
-```bash
-OMP_NUM_THREADS=1 python -m torch.distributed.launch --master_port=29501 --nproc_per_node=8 main_pretrain.py --batch_size 64 --model mae_vit_large_patch16 --norm_pix_loss --mask_ratio 0.75 --epochs 800 --warmup_epochs 40 --blr 1.5e-4 --weight_decay 0.05 --data_path ${DATA_DIR} --output_dir $EXP_NAME --log_dir $EXP_NAME > ${EXP_NAME}.out
-``` -->
-
 ### CLIP/FairCLIP
 The code for pre-training **CLIP** and **FairCLIP** is in the folder [FairCLIP](./FairCLIP).
 
 ### BLIP-2
 ```bash
 cd FairCLIP/LAVIS
-python -m torch.distributed.run --nproc_per_node=1 --master_port=29501 train.py --cfg-path FairCLIP/LAVIS/lavis/projects/blip2/train/pretrain_stage1.yaml
+python -m torch.distributed.run --nproc_per_node=1 --master_port=29501 train.py --cfg-path lavis/projects/blip2/train/pretrain_stage1.yaml
 ```
 
 ## Evaluation
 
-### Zero-shot
-
-### CLIP
-
-```bash
-python src/clip_eval.py
-```
-
-### BLIP-2
-
-```bash
-python src/blip_eval.py
-```
-
 ### Linear Probing
-For linear probing, use the following command. 
-
 ```bash
 cd FairCLIP/mae
 DATA_DIR=/Path/to/FairVLMed
 FEATS_TYPE=image # [image, multimodal]
 
-PRETRAIN_CHKPT=clip_vitl14_ep004.pth
+PRETRAIN_CHKPT=/Path/to/CKPT
 EXP_NAME=tmp
-MODEL_TYPE=clip # [clip, blip2]
+MODEL_TYPE=blip2 # [clip, blip2]
 
-OMP_NUM_THREADS=1 python -m torch.distributed.launch --master_port=29501 --nproc_per_node=1 main_linprobe.py --model_type ${MODEL_TYPE} --vl_feats_type ${FEATS_TYPE} --cfg-path FairCLIP/LAVIS/lavis/projects/blip2/train/pretrain_stage1.yaml --vision_encoder_weights clip --summary_type original --batch_size 512 --model vit_large_patch16 --cls_token --finetune ${PRETRAIN_CHKPT} --epochs 1000 --blr 0.1 --weight_decay 0.0 --data_path ${DATA_DIR} --output_dir $EXP_NAME --log_dir $EXP_NAME --nb_classes 2 > ${EXP_NAME}.out
+OMP_NUM_THREADS=1 python -m torch.distributed.launch --master_port=29501 --nproc_per_node=1 main_linprobe.py --model_type ${MODEL_TYPE} --vl_feats_type ${FEATS_TYPE} --blip_feats_select avgpool --cfg-path ../LAVIS/lavis/projects/blip2/train/pretrain_stage1.yaml --vision_encoder_weights clip --summary_type original --batch_size 512 --model vit_large_patch16 --cls_token --finetune ${PRETRAIN_CHKPT} --epochs 1000 --blr 0.1 --weight_decay 0.0 --data_path ${DATA_DIR} --output_dir $EXP_NAME --log_dir $EXP_NAME --nb_classes 2 > ${EXP_NAME}.out
 ```
 
 ## Citation
@@ -123,21 +101,3 @@ If you find our code or the FairVLMed dataset are helpful for your research, ple
 }
 
 ```
-
-<!-- 
-## Pre-trained Models
-
-Download links for our pre-trained models can be found [here](LINK_TO_PRETRAINED_MODELS).
-
-## Citation
-
-If you find our work useful, please consider citing:
-
-## License
-
-This project is licensed under the terms of the [TBD License](LICENSE).
-
-## Contact
-
-For any queries, please feel free to open a GitHub issue.
--->

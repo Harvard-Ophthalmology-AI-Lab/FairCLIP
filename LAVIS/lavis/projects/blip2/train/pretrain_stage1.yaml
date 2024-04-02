@@ -10,12 +10,12 @@ model:
   # pretrained: "https://storage.googleapis.com/sfr-vision-language-research/LAVIS/models/BLIP2/blip2_pretrained_vitL.pth"
   freeze_vit: True
   vit_model: clip_L
-  vision_encoder_weights: clip # [clip, pmc-clip, fundus-clip, fundus-mae]
+  vision_encoder_weights: clip # [clip, pmc-clip]
   vit_precision: fp32
 
 datasets:
   fundus:
-    summary_type: med42 # [original, pmc-llama, med42, gpt-4]
+    summary_type: original # [original, pmc-llama, med42, gpt-4]
     max_words: 50
   # coco_caption:
   #   vis_processor:
@@ -57,7 +57,8 @@ run:
   warmup_steps: 5000
 
   seed: 42
-  output_dir: "../../../../../PRETRAIN_EXPS/Pretrain_Stage1"
+  # output_dir: "../../../../../PRETRAIN_EXPS/Pretrain_Stage1"
+  output_dir: "PRETRAIN_EXPS/Pretrain_Stage1"
 
   amp: True
   resume_ckpt_path: null

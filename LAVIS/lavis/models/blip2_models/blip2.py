@@ -27,10 +27,6 @@ from transformers import BertTokenizer
 
 import open_clip
 
-import sys
-sys.path.append('../../../../mae')
-import models_vit
-from util.pos_embed import interpolate_pos_embed
 from lavis.models.eva_vit import convert_weights_to_fp16
 
 class Blip2Base(BaseModel):
@@ -96,33 +92,6 @@ class Blip2Base(BaseModel):
             print(load_weights)
             assert len(load_weights.missing_keys) == 0
             del model
-        elif vision_encoder_weights == "fundus-clip":
-            raise Exception("not implemented")
-        elif vision_encoder_weights == "fundus-mae":
-            visual_encoder = models_vit.__dict__["vit_large_patch16"](
-                num_classes=2,
-                global_pool=False,
-                return_blip2=True
-            )
-
-            checkpoint = torch.load("../../../../PRETRAIN_EXPS/MAE_VIT_LARGE_PRETRAIN/checkpoint-799.pth", map_location='cpu')
-            print("Load MAE pre-trained checkpoint")
-            checkpoint_model = checkpoint['model']
-            # interpolate position embedding
-            interpolate_pos_embed(visual_encoder, checkpoint_model)
-            # load pre-trained model
-            msg = visual_encoder.load_state_dict(checkpoint_model, strict=False)
-            print(msg)
-
-            assert set(msg.missing_keys) == {'head.weight', 'head.bias'}
-
-            visual_encoder.blocks[23] = torch.nn.Identity()
-            visual_encoder.norm = torch.nn.Identity()
-            visual_encoder.head = torch.nn.Identity()
-            if precision == "fp16":
-                convert_weights_to_fp16(visual_encoder)
-
-            print("Loaded FUNDUS-MAE weights!")
 
         return visual_encoder, ln_vision
 
