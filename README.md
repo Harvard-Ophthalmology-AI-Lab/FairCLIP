@@ -93,7 +93,7 @@ If you find our code or the FairVLMed dataset are helpful for your research, ple
 ```
 @InProceedings{Luo_2024_CVPR,
     author    = {Yan Luo, Min Shi, Muhammad Osama Khan, Muhammad Muneeb Afzal, Hao Huang, Shuaihang Yuan, Yu Tian, Luo Song, Ava Kouhana, Tobias Elze, Yi Fang, Mengyu Wang},
-    title     = {airCLIP: Harnessing Fairness in Vision-and-Language Learning},
+    title     = {FairCLIP: Harnessing Fairness in Vision-and-Language Learning},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
     year      = {2024},
