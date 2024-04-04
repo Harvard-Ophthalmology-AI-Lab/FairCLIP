@@ -51,6 +51,7 @@ language: English (0), Spanish (1), Other (2), Unknown (-1)
 maritalstatus: Marriage or Partnered (0), Single (1), Divorced (2), Widoled (3), Legally Separated (4), Unknown (-1)
 glaucoma: Non-Glaucoma (0) or Glaucoma (1)
 note: the original de-identified clinical note
+note_extra: the original de-identified clinical note with demographic attributes placed at the beginning
 ```
 
 ## LLM Summarization
