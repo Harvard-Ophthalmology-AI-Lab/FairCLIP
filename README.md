@@ -7,7 +7,6 @@
 > by [Yan Luo*](https://luoyan407.github.io/), [Min Shi*](https://shiminxst.github.io/index.html), Muhammad Osama Khan*, Muhammad Muneeb Afzal, Hao Huang, Shuaihang Yuan,  [Yu Tian*](https://yutianyt.com/), Luo Song, Ava Kouhana, [Tobias Elze](http://www.tobias-elze.de/), [Yi Fang](https://engineering.nyu.edu/faculty/yi-fang), and [Mengyu Wang](https://ophai.hms.harvard.edu/team/dr-wang/).
 >
 
-This repository provides the code and the dataset for the paper entitled *FairCLIP: Harnessing Fairness in Vision-Language Learning*. 
 
 ## Abstract
 
