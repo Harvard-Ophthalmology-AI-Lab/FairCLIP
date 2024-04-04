@@ -29,10 +29,9 @@ The Harvard-FairVLMed dataset comprises 10,000 samples from 10,000 subjects. It 
 Harvard-FairVLMed
 ├── data_summary.csv
 ├── gpt-4_summarized_notes.csv
-├── original_notes.csv
-├── Testing
 ├── Training
-└── Validation
+├── Validation
+└── Test
 ```
 The file split_files.csv details the division of data into training, validation, and testing sets. The data folder contains 10,000 NPZ files named in the format "data_xxxxx.npz", where "xxxxx" (e.g., 06691) is a unique numeric ID. The file meta_all.csv provides metadata (such as race, gender, ethnicity, marital status, age, and preferred language) for each NPZ file. Moreover, the files original_notes.csv and gpt-4_summarized_notes.csv contain original notes and notes summarized by GPT-4, respectively.
 
