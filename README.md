@@ -1,7 +1,5 @@
 
 # FairCLIP
-
-# FairSeg
 > [**CVPR 2024**] [**FairCLIP: Harnessing Fairness in Vision-Language Learning**](https://arxiv.org/pdf/2403.19949.pdf)
 >
 > by [Yan Luo*](https://luoyan407.github.io/), [Min Shi*](https://shiminxst.github.io/index.html), Muhammad Osama Khan*, Muhammad Muneeb Afzal, Hao Huang, Shuaihang Yuan,  [Yu Tian*](https://yutianyt.com/), Luo Song, Ava Kouhana, [Tobias Elze](http://www.tobias-elze.de/), [Yi Fang](https://engineering.nyu.edu/faculty/yi-fang), and [Mengyu Wang](https://ophai.hms.harvard.edu/team/dr-wang/).
