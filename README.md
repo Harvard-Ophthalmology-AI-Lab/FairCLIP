@@ -91,7 +91,7 @@ OMP_NUM_THREADS=1 python -m torch.distributed.launch --master_port=29501 --nproc
 
 ## Citation
 
-If you find our code or the Harvard-FairVLMed dataset are helpful for your research, please consider citing our paper:
+If you find our code or the Harvard-FairVLMed dataset helpful for your research, please consider citing our paper:
 
 ```
 @InProceedings{Luo_2024_CVPR,
