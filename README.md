@@ -91,7 +91,7 @@ OMP_NUM_THREADS=1 python -m torch.distributed.launch --master_port=29501 --nproc
 
 ## Citation
 
-If you find our code or the Harvard-FairVLMed dataset helpful for your research, please consider citing our [paper]((https://openaccess.thecvf.com/content/CVPR2024/papers/Luo_FairCLIP_Harnessing_Fairness_in_Vision-Language_Learning_CVPR_2024_paper.pdf)):
+If you find our code or the Harvard-FairVLMed dataset helpful for your research, please consider citing our [paper](https://openaccess.thecvf.com/content/CVPR2024/papers/Luo_FairCLIP_Harnessing_Fairness_in_Vision-Language_Learning_CVPR_2024_paper.pdf):
 
 ```
 @inproceedings{luo2024fairclip,
