@@ -91,16 +91,15 @@ OMP_NUM_THREADS=1 python -m torch.distributed.launch --master_port=29501 --nproc
 
 ## Citation
 
-If you find our code or the Harvard-FairVLMed dataset helpful for your research, please consider citing our paper:
+If you find our code or the Harvard-FairVLMed dataset helpful for your research, please consider citing our [paper]((https://openaccess.thecvf.com/content/CVPR2024/papers/Luo_FairCLIP_Harnessing_Fairness_in_Vision-Language_Learning_CVPR_2024_paper.pdf)):
 
 ```
-@InProceedings{Luo_2024_CVPR,
-    author    = {Yan Luo, Min Shi, Muhammad Osama Khan, Muhammad Muneeb Afzal, Hao Huang, Shuaihang Yuan, Yu Tian, Luo Song, Ava Kouhana, Tobias Elze, Yi Fang, Mengyu Wang},
-    title     = {FairCLIP: Harnessing Fairness in Vision-and-Language Learning},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-    month     = {June},
-    year      = {2024},
-    pages     = {}
+@inproceedings{luo2024fairclip,
+  title={Fairclip: Harnessing fairness in vision-language learning},
+  author={Luo, Yan and Shi, Min and Khan, Muhammad Osama and Afzal, Muhammad Muneeb and Huang, Hao and Yuan, Shuaihang and Tian, Yu and Song, Luo and Kouhana, Ava and Elze, Tobias and others},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={12289--12301},
+  year={2024}
 }
 
 ```
