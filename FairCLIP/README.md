@@ -58,6 +58,8 @@ To run the experiments for zero-shot transfer with FairCLIP, execute:
 ./scripts/finetune_FairCLIP.sh
 ```
 
+With torch==2.2.2+cu121 and a random seed of 5681, we achieve an AUC of 0.7233 on the metric with the attribute Race in zero-shot experiments using a single A6000 GPU. Different Torch versions may require adjustments to the hyperparameters of the proposed methods.
+
 To evaluate the models pre-trained in the above processes, execute:
 
 ```

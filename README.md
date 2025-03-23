@@ -19,6 +19,12 @@ To set up the required environment:
 conda env create -f fairclip.yml
 ```
 
+In our initial commit, we used *torch==1.11.0+cu113*. As the CUDA software, along with the NVIDIA graphics driver, can be updated automatically (e.g., from CUDA 11.3 to CUDA 12.1), you can upgrade your compatible torch with the following commend
+
+```bash
+pip install torch===2.2.2+cu121 -f https://download.pytorch.org/whl/torch_stable.html
+```
+
 ## Dataset
 
 The Harvard-FairVLMed dataset can be accessed via this [link](https://drive.google.com/drive/folders/1bkeifigwOAfnsLvup9mJOSNeA3WsvA2l?usp=drive_link). This dataset can only be used for non-commercial research purposes. At no time, the dataset shall be used for clinical decisions or patient care. The data use license is [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). If you have any questions, please email <harvardophai@gmail.com> and <harvardairobotics@gmail.com>.
