@@ -25,8 +25,8 @@ from src import logger
 
 parser = argparse.ArgumentParser(description='FairCLIP Training/Fine-Tuning')
 
-parser.add_argument('--seed', default=-1, type=int,
-                    help='seed for initializing training. ')
+parser.add_argument('--seed', default=7916, type=int,
+                    help='seed for initializing training. 7916 for FairCLIP FTed with the Race attributes, 6799 for FairCLIP FTed with the Gender attributes, and 1693 for FairCLIP FTed with the Ethnicity attributes.')
 parser.add_argument('--num_epochs', default=10, type=int)
 parser.add_argument('--lr', '--learning-rate', default=0.05, type=float,
                     metavar='LR', help='initial learning rate', dest='lr')
@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
     model_arch_mapping = {'vit-b16': 'ViT-B/16', 'vit-l14': 'ViT-L/14'}
 
-    best_global_perf_file = os.path.join(os.path.dirname(args.result_dir), f'best_{args.perf_file}')
+    best_global_perf_file = os.path.join(args.result_dir, f'best_{args.perf_file}')
     acc_head_str = ''
     auc_head_str = ''
     dpd_head_str = ''

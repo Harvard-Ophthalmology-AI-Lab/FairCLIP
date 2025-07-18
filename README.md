@@ -16,13 +16,8 @@ Fairness is a critical concern in deep learning, especially in healthcare, where
 To set up the required environment:
 
 ```bash
-conda env create -f fairclip.yml
-```
-
-In our initial commit, we used *torch==1.11.0+cu113*. As the CUDA software, along with the NVIDIA graphics driver, can be updated automatically (e.g., from CUDA 11.3 to CUDA 12.1), you can upgrade your compatible torch with the following commend
-
-```bash
-pip install torch===2.2.2+cu121 -f https://download.pytorch.org/whl/torch_stable.html
+conda create --name fairclip python=3.9.12
+pip install -r requirements.txt
 ```
 
 ## Dataset
@@ -96,6 +91,18 @@ MODEL_TYPE=blip2 # [clip, blip2]
 
 OMP_NUM_THREADS=1 python -m torch.distributed.launch --master_port=29501 --nproc_per_node=1 main_linprobe.py --model_type ${MODEL_TYPE} --vl_feats_type ${FEATS_TYPE} --blip_feats_select avgpool --cfg-path ../LAVIS/lavis/projects/blip2/train/pretrain_stage1.yaml --vision_encoder_weights clip --summary_type original --batch_size 512 --model vit_large_patch16 --cls_token --finetune ${PRETRAIN_CHKPT} --epochs 1000 --blr 0.1 --weight_decay 0.0 --data_path ${DATA_DIR} --output_dir $EXP_NAME --log_dir $EXP_NAME --nb_classes 2 > ${EXP_NAME}.out
 ```
+
+## Checkpoints
+
+The checkpoints trained in the CUDA 12.1 environment (see requirements.txt) can be found at [this shared folder](https://drive.google.com/drive/folders/1byRoH6--ShErPrCliRqt8Fw6qofPihg5?usp=sharing). Their performance is comparable to prior versions, as shown below.
+
+| Method (ViT-16)       | AUC    | ES-AUC (Race) | ES-AUC (Gender) | ES-AUC (Ethnicity) | Black AUC | Asian AUC | White AUC | Female AUC | Male AUC | Non-Hispanic AUC | Hispanic AUC |
+|-----------------------|--------|---------------|------------------|---------------------|-----------|-----------|-----------|-------------|----------|-------------------|---------------|
+| CLIP                  | 0.6902 | 0.6464        | 0.6495           | 0.6212              | 0.7242    | 0.7078    | 0.6741    | 0.6628      | 0.7253   | 0.6940            | 0.5830        |
+| FairCLIP (Race)       | 0.7106 | 0.6714        | 0.6621           | 0.6141              | 0.7357    | 0.7306    | 0.6973    | 0.6786      | 0.7518   | 0.7154            | 0.5583        |
+| FairCLIP (Gender)     | 0.7222 | 0.6698        | 0.6770           | 0.6443              | 0.7728    | 0.7378    | 0.7102    | 0.6923      | 0.7591   | 0.7260            | 0.6052        |
+| FairCLIP (Ethnicity)  | 0.7275 | 0.6662        | 0.6786           | 0.6519              | 0.7697    | 0.7624    | 0.7126    | 0.6955      | 0.7676   | 0.7316            | 0.6156        |
+
 
 ## Acknowledgment and Citation
 

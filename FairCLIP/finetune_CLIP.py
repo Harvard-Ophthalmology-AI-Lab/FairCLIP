@@ -23,7 +23,7 @@ from src import logger
 
 parser = argparse.ArgumentParser(description='CLIP Training/Fine-Tuning')
 
-parser.add_argument('--seed', default=-1, type=int,
+parser.add_argument('--seed', default=8390, type=int,
                     help='seed for initializing training. ')
 parser.add_argument('--num_epochs', default=10, type=int)
 parser.add_argument('--lr', '--learning-rate', default=0.05, type=float,
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     model_arch_mapping = {'vit-b16': 'ViT-B/16', 'vit-l14': 'ViT-L/14'}
 
-    best_global_perf_file = os.path.join(os.path.dirname(args.result_dir), f'best_{args.perf_file}')
+    best_global_perf_file = os.path.join(args.result_dir, f'best_{args.perf_file}')
     acc_head_str = ''
     auc_head_str = ''
     dpd_head_str = ''
@@ -101,7 +101,7 @@ if __name__ == '__main__':
     val_dataloader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True, drop_last=False)
 
-    test_dataset = fair_vl_med_dataset(args.dataset_dir, preprocess, subset='Test')
+    test_dataset = fair_vl_med_dataset(args.dataset_dir, preprocess, subset='Testing')
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True, drop_last=False)
     

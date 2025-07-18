@@ -1,5 +1,5 @@
 #!/bin/bash
-DATASET_DIR=/shared/ssd_30T/yl535/project/python/datasets/harvard/FairVLMed
+DATASET_DIR=/PATH-TO_DATASET/FairVLMed
 RESULT_DIR=.
 MODEL_ARCH=vit-b16 # Options: vit-b16 | vit-l14
 NUM_EPOCH=10
@@ -10,7 +10,7 @@ LR=1e-5
 BATCH_SIZE=32
 LAMBDA=1e-6
 BATCH_SIZE_FAIR=32
-SK_BLUR=1e-4
+SK_BLUR=1e-6
 
 PERF_FILE=${MODEL_ARCH}_${MODALITY_TYPE}_${ATTRIBUTE_TYPE}_FairCLIP.csv
 
@@ -25,5 +25,4 @@ python ./finetune_FairCLIP.py \
 		--batchsize_fairloss ${BATCH_SIZE_FAIR} \
 		--lambda_fairloss ${LAMBDA} \
 		--sinkhorn_blur ${SK_BLUR} \
-		--seed 5681 \
 		--summarized_note_file ${SUMMARIZED_NOTE_FILE} 
